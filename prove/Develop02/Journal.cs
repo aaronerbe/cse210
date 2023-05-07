@@ -10,41 +10,41 @@ class Journal
         DateTime _currentDate = DateTime.Now;
 
         //Create Prompts instance
-        Prompts p = new Prompts();
+        Prompts _p = new Prompts();
         //Create menu instance and print to display
-        Menu m = new Menu();
+        Menu _m = new Menu();
         //Create Entry instance
-        Entry e = new Entry();
+        Entry _e = new Entry();
 
         //Call DisplayMenu & return/save the menuOption user has selected inside of the DisplayMenu function
-        m._menuOption = DisplayMenu(m);
+        _m._menuOption = DisplayMenu(_m);
 
         //While Loop to run until user selects 5
-        while (m._menuOption != 5)   
+        while (_m._menuOption != 5)   
         {
-            switch(m._menuOption)
+            switch(_m._menuOption)
             {
                 case 1:
-                    BuildEntry(p, e, _currentDate);
+                    BuildEntry(_p, _e, _currentDate);
                     //Call DisplayMenu
-                    m._menuOption = DisplayMenu(m);   
+                    _m._menuOption = DisplayMenu(_m);   
                     break;
                 case 2:
-                    DisplayEntry(e);
+                    DisplayEntry(_e);
                     //Call DisplayMenu
-                    m._menuOption = DisplayMenu(m); 
+                    _m._menuOption = DisplayMenu(_m); 
                     break;
                 case 3:
                     //Load File
-                    LoadFromFile(e);
+                    LoadFromFile(_e);
                     //Call DisplayMenu
-                    m._menuOption = DisplayMenu(m); 
+                    _m._menuOption = DisplayMenu(_m); 
                     break;
                 case 4:
                     //filename = GetFilename();
-                    SaveToFile(e);
+                    SaveToFile(_e);
                     //Call DisplayMenu
-                    m._menuOption = DisplayMenu(m); 
+                    _m._menuOption = DisplayMenu(_m); 
                     break;
                 default:
                     Console.WriteLine("case default");
@@ -59,7 +59,7 @@ class Journal
     
 //FUNCTIONS
     //LoadFrom File
-    public static void LoadFromFile(Entry e)
+    public static void LoadFromFile(Entry _e)
     {
         string filename = GetFileName();
         Console.WriteLine("Loading File");
@@ -69,20 +69,20 @@ class Journal
         foreach (string line in lines)
         {
             //Console.WriteLine(line);
-            e._localEntries.Add(line);
+            _e._localEntries.Add(line);
         }
     }
 
     //SaveToFile
-    public static void SaveToFile(Entry e)
+    public static void SaveToFile(Entry _e)
     {
         string filename = GetFileName();
         Console.WriteLine("Saving File");
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
-            for (int i = 0; i < e._localEntries.Count; i++)
+            for (int i = 0; i < _e._localEntries.Count; i++)
             {
-                outputFile.WriteLine(e._localEntries[i]);
+                outputFile.WriteLine(_e._localEntries[i]);
             }
                 
         }
@@ -97,31 +97,31 @@ class Journal
     }
 
     //Display Entries
-    public static void DisplayEntry(Entry e)
+    public static void DisplayEntry(Entry _e)
     {
-        for (int i = 0; i < e._localEntries.Count; i++)
+        for (int i = 0; i < _e._localEntries.Count; i++)
         {
-            Console.WriteLine(e._localEntries[i]);
+            Console.WriteLine(_e._localEntries[i]);
         }
     }        
 
     //Build New Entry
-    public static void BuildEntry(Prompts p, Entry e, DateTime currentDate)
+    public static void BuildEntry(Prompts _p, Entry _e, DateTime currentDate)
     {
         //EXTRA:  randomly select a prompt from the list and remove that from the list so it's not redundant
         Random rand = new Random();
-        if (p._prompt.Count > 0)
+        if (_p._prompt.Count > 0)
         {
-            p._randomIndex = rand.Next(p._prompt.Count);
-            e._prompt = p._prompt[p._randomIndex];
-            p._prompt.RemoveAt(p._randomIndex);
+            _p._randomIndex = rand.Next(_p._prompt.Count);
+            _e._prompt = _p._prompt[_p._randomIndex];
+            _p._prompt.RemoveAt(_p._randomIndex);
         
             //Write to display
-            Console.WriteLine(e._prompt); 
+            Console.WriteLine(_e._prompt); 
             //Collect response to Entry class to build entry
-            e._response = Console.ReadLine();
+            _e._response = Console.ReadLine();
             //build entry into class
-            e._localEntries.Add($"Date: {currentDate} - Prompt: {e._prompt} \n{e._response}");
+            _e._localEntries.Add($"Date: {currentDate} - Prompt: {_e._prompt} \n{_e._response}");
         }
         //EXTRA:  If no more prompt questions, just inform them there's no more and return to menu
         else
@@ -131,7 +131,7 @@ class Journal
     }
 
     //DisplayMenu Function
-    public static int DisplayMenu(Menu m)
+    public static int DisplayMenu(Menu _m)
     {
         Boolean isValid = false;
         int menuOption = 0;
@@ -140,14 +140,14 @@ class Journal
         {
             Console.WriteLine();
             //write menus to screen
-            foreach (string menuItem in m.menu)
+            foreach (string menuItem in _m.menu)
             {
                 Console.WriteLine (menuItem);
             }
             //collect user input
             menuOption = int.Parse(Console.ReadLine());
             //EXTRA:   Check if it's valid (in the _validOptions list)
-            isValid = m._validOptions.Contains(menuOption);
+            isValid = _m._validOptions.Contains(menuOption);
             //EXTRA:  if still not valid, notify them and then it will loop the menu again
             if (!isValid)
             {
