@@ -3,7 +3,7 @@
     //As the program randomly selects from the prompts list, it removes that prompt so it doesn't come back up.  
     //If the user exhuasts all prompts, it informs them there are not more prompt questions. 
     //Program verifies that the menu entry from the user is valid.  If not, it continues looping Warning the entry is invlid and displaying the menu options.  
-    //Pulled Menue into it's own class to simplify code.  
+    //Pulled Menu into its own class to simplify code.  
 
 class Program
 {
