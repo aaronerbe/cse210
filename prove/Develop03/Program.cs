@@ -1,3 +1,14 @@
+//Exceeding Requirements:
+    //1.  Keep track of the Random hidden words to ensure we don't repeat
+    //2.  Pull the scriptures from a csv file ("scriptures.txt")
+        //Randomly selects 1 entry from this file and uses that.
+    //3.  Added option for user to entere space (" ").  This temporarily shows all the hidden words
+        //On next "Enter" it re-hides all the words that were previously hidden.
+        //Subsequent "Enter" will continue hiding words as normal
+    //4.  Minor Display cleanup.  
+        //Verses start on new line under Book & Chapter
+        //Cleaned up Options menu some for readability.  
+
 class Program
 {    
     static void Main(string[] args){
@@ -22,7 +33,7 @@ class Program
             s.HideWords();
 
             //Display the options for the user.  
-            Console.WriteLine("\nOptions: \n--------------------------------------------------- \n+ Enter <space> ' ' To Continue \n+ Press 'spacebar' To Temporarily Show Hidden Words \n+ Type 'quit' To Finish \n---------------------------------------------------");
+            Console.WriteLine("\nOptions: \n---------------------------------------------------- \n+ Press Enter To Continue \n+ Enter <space> ' ' To Temporarily Show Hidden Words \n+ Type 'quit' To Finish \n----------------------------------------------------");
             userEntry = Console.ReadLine();     //capture what user inputs
             
         }
