@@ -7,7 +7,7 @@ public class Scripture{
 
     //CONSTRUCTOR
     public Scripture(string reference, string words){
-        Reference r = new Reference(reference);         //Create REference Class and let it's Constructor parse out Book, Chapter, Verse(s)
+        Reference r = new Reference(reference);         //Create Reference Class and let it's Constructor parse out Book, Chapter, Verse(s)
         _reference = r.GetReference();                  //Capture reference string using GetReference method
         BuildWords(words);                              //Build the words list based on input given (saves to _words list)
     }
