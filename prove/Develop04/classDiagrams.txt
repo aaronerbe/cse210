@@ -1,0 +1,70 @@
+
+Class Activity:
+    Attributes:
+    _activityName: string
+    _activityDescription: string
+    _duration: int
+//    _startMsg: string
+//    _endMsg: string
+
+    Behaviors:
+    StartMsg(): void
+    EndMsg(): void
+    PauseAnimation(): void
+    PauseCountdown(): void
+    SetDuration(): void
+    GetDuration(): int
+
+    Constructor:
+    Activity(name, description, duration, startmsg, endmsg)
+
+Class BreathingActivity: Activity
+    Attributes:
+    _breathInTime: int
+    _breathOutTime: int
+
+
+    Behaviors:
+    RunBreathingActivity(): void
+
+    Constructor:
+    BreathingActivity(name, description, duration, startmsg, endmsg, _breathInTime, _breathOutTime)
+
+Class ReflectionActivity: Activity
+    Attributes:
+    _RandomPromptList: List<string>
+    _RandomQuestionList: List<string>
+    _countdownTime: int
+
+    Behaviors:
+    RunReflectingAcvitiy: void
+    GetRandomPrompt(): string
+    GetRandomQuestion(): string
+    DisplayPrompt(): void
+    DisplayQuestion(): void
+    private GenerateRandomIndex(): int
+
+    Constructor:
+    ReflectionActivity(name, description, duration, startmsg, endmsg, _countdownTime)
+
+Class ListingActivity: Actiity
+    _randomPrompt: List<string>
+    _countdownTime: int
+    _userList: List<string>
+    _numberOfUserList: int
+
+    Behaviors:
+    RunListingActivity: void
+    GetRandomPrompt(): string
+    DisplayPrompt(): void
+    DisplayNumberOfItems: void
+
+    Cosntructor:
+    ListingActivity(name, description, duration, startmsg, endmsg, countdownTime)
+
+
+menu -> listing activity -> create Listing Activity Instance ->  startmsg -> ask for duration -> set duration in Activity class
+
+Class Animations?
+
+Class Menu

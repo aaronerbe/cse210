@@ -1,0 +1,135 @@
+Specs:
+    1.  provide 3 activities
+        -Breathing
+        -Reflection
+        -Listing
+    2.  Help work through these activities in stages using basic forms of delay (animation/countdown)
+
+Functional Requirements:
+    1.  Menu System to choose activity
+    2.  Each Activity starts with common starting message.  
+        -Provides name of activity + description
+        -Ask for desired duraction
+        -Set duration of activity (seconds)
+        -Tell user to pepare to begin, 
+        -Pause for several seconds.
+    3.  Each Activity ends with common ending message:
+        -Tell user they've done a good job.
+        -Pause
+        -State the activity they completed + length of time
+        -Pause for several seconds
+        -Finish
+    4.  When app pauses:
+        -Show an animation (spinner, countdown timer, periods)
+    5.  Interface should match video demo
+
+Breathing Activity:
+    1.  Begin with starting msg
+        -"This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing."
+    2.  Prompt for duraction.
+    3.  Show series of "Breathe in..." / "Breathe out"
+        -Pause between each for several seconds. 
+        -Show countdown
+    4.  Continue until reached duration.  
+    5.  Conclude with finishing message (standard for all activities)
+Reflection Activity:
+    1.  Begin with starting msg
+        -"This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life."
+    2.  Prompt for duration.
+    3.  Select RANDOM promp to show user such as:
+        -Think of a time when you stood up for someone else.
+        -Think of a time when you did something really difficult.
+        -Think of a time when you helped someone in need.
+        -Think of a time when you did something truly selfless.
+    4.  Ask user to reflect on questions that related to this experience.  Pull questions from LIST.
+        -Why was this experience meaningful to you?
+        -Have you ever done anything like this before?
+        --How did you get started?
+        -How did you feel when it was complete?
+        -What made this time different than other times when you were not as successful?
+        -What is your favorite thing about this experience?
+        -What could you learn from this experience that applies to other situations?
+        -What did you learn about yourself through this experience?
+        -How can you keep this experience in mind in the future?
+    5.  After each question, pause for several seconds before continuing to next question.  
+        -Display a kind of spinner
+    6.  Continue showing RANDOM questions until duraction.
+    7.  Conclude with standard finishing msg.
+Listing Activity:
+    1.  Begin with starting msg:
+        -"This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area."
+    2.  Prompt for duration
+    3.  Select RANDOM prompt:
+            -Who are people that you appreciate?
+            -What are personal strengths of yours?
+            -Who are people that you have helped this week?
+            -When have you felt the Holy Ghost this month?
+            -Who are some of your personal heroes?
+    4.  After displaying prompt:
+        -Give countdown to begin thinking about the prompt.  
+        -Prompt to keep listing items.
+    5.  User LISTS as many items as possible until duration.
+    6.  Diplay back the number of items
+    7.  Conclude with standard finishing msg
+
+Design Requirements:
+    1.  Use Inheritance
+        -Seperate class for each activity.
+        -Base class to contain any shared attributes or behaviors
+    2.  Avoid duplicating code in classes where it could be in base.
+    3.  Use encapsulation:
+        -private member variables
+    4.  Use Abstraction:
+        -put related items in the same class.
+Simplification:
+    1.  Don't need to track stats (how frequently user has done an activity).
+    2.  You can just choose random questions or prompts from the list.  Don't worry about it if it was already chosen or running out of prompts.  
+Exceeding Requirements:
+    -Add another activity
+    -Keep log of how many times activites were performed
+    -Make sure no random prompts/questions are selected until they've all been used at least once.
+    -Save and load a log file.
+    -More meaningful animations for beathing.  Eg
+        -txt that grows out quickly at first and then slows as they near the end of the breath.
+    -Anything else.  
+
+Video Notes:
+    -Breathing:
+        -duration stored in member variable for all activities
+        -finish msg:
+         "Well done!!"
+         "You have completed another xx seconds of the Reflection Acvitity"
+         -\|/-
+    -Reflection activity:
+        -After asking a random question:  "When you have something in mind, press enter to continue" for refelction activity
+        -then pull from random list with spinner
+            "how did you feel when it was completed?  -\|/-
+    -Listing activity:
+        -After intro msg:
+            "Get ready..."
+            -\|/-
+            List as many responses you can to the following prompt:
+            --- When have you felt the HG this mo?---
+            You may begin in: 5, 4, 3, 2, 1
+        -given a question, 
+            let them keep typing as many as possible until run out of time.
+
+    After activity, return to menu
+        
+    Feture enhancment:
+        -make sure we don't get duplicate questions until we've gone through them all
+
+    Code Helps:
+        Pausing:  
+            -"Thread.Sleep()" uses milliseconds
+        Display Animations:
+            -pause for period of time, then replace previous char w/ a new one.  
+            -backspace charactoer "\b"
+            -Common to use "\b \b"
+                This moves left, writes a space, moves left again
+        Working with Time:
+            -get current time, add number of seconds to it, then check if current time < new time.
+            -DateTime class
+                -DateTime.Now (current time)
+                -.AddSecondds(numberOfSeconds)
+
