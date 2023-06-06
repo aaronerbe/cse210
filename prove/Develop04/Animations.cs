@@ -6,11 +6,13 @@ class Animation{
         _duration = 0;
     }
     
-    public void RunAnimation(int duration, string type){
+    //Is used to call whichever animation is needed.  Controlled by a switch case and keywords.  Also passes on a message that can be used in some animations.
+    public void RunAnimation(int duration, string type, string msg){
         _duration = duration;
         switch (type.ToLower()){
             case "spin":
-                Spinner(_duration);
+                //doing /2 cause the normal pause seems long for the 'get ready' pauses.  
+                Spinner(_duration/2, msg);
                 break;
             case "pingpong":
                 PingPong(_duration);
@@ -18,56 +20,68 @@ class Animation{
             case "ring":
                 Ring(_duration);
                 break;
-            case "grow":
-                Grow(_duration);
+            case "breathe":
+                Breathe(_duration);
                 break;
             case "countdown":
-                Countdown(_duration);
+                Countdown(_duration, msg);
                 break;
         }
     }
-    private void Spinner(int duration){
+
+    //basic spinner animation.  Used with a message.  Usually "Get ready..."
+    private void Spinner(int duration, string msg){
         List<string> animationList = new List<string>();
         animationList.Add("|");
         animationList.Add("/");
         animationList.Add("-");
         animationList.Add("\\");
 
+        //uses datetime to only run the animation for the length based on duration set.  
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(duration);
-
+        //hide cursor to make it prettier
+        Console.CursorVisible = false;
+        Console.WriteLine(msg);
         int i = 0;
-        //Console.Clear();
+        //run until duration is met
         while (DateTime.Now < endTime){
+            //step through the list of animations to create the spinning effect
             Console.Write(animationList[i]);
-            Thread.Sleep(1000);
+            //short pause in between
+            Thread.Sleep(100);
+            //backs up writes a space then backs up again to prep writing the next animation step
             Console.Write("\b \b");
+            //this will increment i until we hit the end of the list, then sets back to zero
             i = (i + 1) % animationList.Count;
-        }        
+        }    
+        //turn the cursor back on    
+        Console.CursorVisible = true;
     }
     private void PingPong(int duration){
-
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(duration);
-        //Console.Clear();
         while (DateTime.Now < endTime){
             Console.CursorVisible = false;
+            //increments up writing a . each time until it hits 5 dots
             for (int i = 0; i<5; i++ ){
                 Console.Write(".");
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
             }
+            //then increments up removing a dot each time
             for (int i = 0; i<5; i++){
                 Console.Write("\b \b");
-                Thread.Sleep(1000);                
+                Thread.Sleep(200);                
             }
         }
         Console.CursorVisible = true;
     }
     private void Ring(int duration){
-
+        //not used but was fun to make
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(duration);
 
+        //each step needed to create an incrementally growing ring, then incrementally degrading ring.  
         List<string> RingList = new List<string>();
         RingList.Add("    --  ");
         RingList.Add("        \\");
@@ -90,7 +104,6 @@ class Animation{
         RingList.Add("         ");
 
         int i = 0;
-        //Console.Clear();
         bool down = false;
         //Make room for the animation:
         Console.WriteLine("\n\n\n\n\n");
@@ -123,18 +136,15 @@ class Animation{
         //increment i up until count, then wraps around again to 0
         i = (i + 1) % RingList.Count;
         }
-
-        //Console.Clear();
         Console.CursorVisible = true;
     }
-    private void Grow(int duration){
+    private void Breathe(int duration){
 
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(duration);
 
+        //the simple growing animation
         List<string> RingList = new List<string>();
-        //RingList.Add("\n\n\n\n\n\n\n ");
-        //RingList.Add("      ");
         RingList.Add("     -");
         RingList.Add("    ---");
         RingList.Add("   -----");
@@ -142,24 +152,35 @@ class Animation{
         RingList.Add(" ---------");
 
         int i = 0;
+        //use a boolean to determine if it should be growing or shrinking
         bool grow = true;
 
         //hide the cursor, clear the console and move down a few spaces to make room for the growing animation
         Console.CursorVisible = false;
         //Console.Clear();
         Console.WriteLine("\n\n\n\n");
-
+        string msg = "Breathe in...";
         //while we're within the duration
         while (DateTime.Now < endTime){
             //hide the cursor for the animation
             Console.CursorVisible = false;
-            //if we're starting out, grow up
+            //if we're starting out, grow up by setting grow to true and resetting msg to breathe in
             if (i == 0){
                 grow = true;
+                msg = "Breathe in...";
+                //Quickly jump to top and reset the lineo of text to Breathe In, then jump back for the animation
+                Console.SetCursorPosition(0,Console.CursorTop -6);
+                Console.Write(msg);
+                Console.SetCursorPosition(0,Console.CursorTop + 6);
             }
-            //if we hit the max in the list, go back down
+            //if we hit the max in the animation list, go back down by setting grow to false and resetting msg to breathe out
             if (i == RingList.Count){
                 grow = false;
+                msg = "Breathe out...";
+                //Quickly jump to top and reset the lineo of text to Breathe In, then jump back for the animation
+                Console.SetCursorPosition(0,Console.CursorTop -1);
+                Console.Write(msg);
+                Console.SetCursorPosition(0,Console.CursorTop + 1);
             }
             if (grow == true){
                 //grow = true means write the next line and then move up in the console
@@ -179,27 +200,26 @@ class Animation{
             //make the cursor visibile again
             Console.CursorVisible = true;
         } 
-        //Console.Clear();
     }
-    private void Countdown(int duration){
+
+    private void Countdown(int duration, string msg){
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(duration);
 
         //Console.Clear();
         int i = duration;
-        Console.Write("You may begin in: ");
+        //write the message passed on.
+        Console.Write(msg);
         while (DateTime.Now < endTime){
             Console.Write(i);
             Thread.Sleep(1000);
-            //Console.Write("\b\b\b   \b\b\b");
             Console.SetCursorPosition(0, Console.CursorTop + 0);
-            Console.Write("You may begin in: ");
+            Console.Write(msg);
             i--;
         }
         Console.SetCursorPosition(0, Console.CursorTop + 0);
-        Console.Write("Begin:                 ");
+        //clears out the left over '1' after the countdown
+        Console.Write(msg+ "      ");
         Console.WriteLine("\n");
     }
-
-
 }
