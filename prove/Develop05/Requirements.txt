@@ -1,0 +1,38 @@
+FUNCTIONAL:
+    1.  SIMPLE GOALS:
+        -can be marked complete and user gains some value
+            -e.g. if you run a marthon you get 1000 points
+    2.  ETERNAL GOALS
+        -Never complete
+        -each time user records them, they gain a value
+            -e.g. every time you read scriptures you get 100 points
+    3.  CHECKLIST GOAL
+        -Must be accomplished a certain number of times to be complete.
+        -Each time user records a goal, they can a value
+        -When they achieve the desired amount, they get an extra bonus
+            -e.g. Set a goal to attend the temple 10x, you might get 50 points each time.  Then bonus of 500 points on 10th time
+    4.  Display user's score
+    5.  Allow user to create new goals of each type.
+    6.  Allow user to record an event (accomplished a goal)
+    7.  Show list of goals.  
+        -indicate whether the goal has been completed or not (e.g. [ ] vs [X])
+        -for checklist goals show how many times a goal has been completed (e.g. Completed 2/5 times)
+    8.  Save and load goals.
+
+DESIGN:
+    1.  Use Inheritance.
+        -base class for goals
+        -child class for each goal type
+    2.  Use Polymorphism
+        -have derived classes override base class methods where appropriate
+    3.  Use Encapsulation & Abstraction.  
+        -private member variables & putting related items in same class
+
+CREATIVITY & EXCEEDING
+    1.  Additional 'gamification' ideas.  
+        -leveling up, certain bonuses, other fun aspects
+    2.  Add additional types of goals
+        -ability to make progress twoards a larger goal
+        -negative goals where you lose points for bad habits
+    3.  etc
+

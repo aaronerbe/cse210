@@ -1,0 +1,88 @@
+Parent abstract Class:  Goal
+    Attributes:
+    _goal: string
+    _description: string
+    _complete: bool
+    _points: int
+    _numDone: int
+    _numMax: int
+        
+    Constructor:
+        Goal(goal, description, points)
+
+    Behaviors:
+        RecordEvent: abstract
+        GetTotalPOints: abstract
+        
+        IsComplete: bool
+        GetGoal: string
+        GetPoints: int
+        GetNumDone: int
+        GetNumMax: int
+        
+        SetGoal: void
+        SetDescription: void
+        SetComplete: void
+        SetNumDone: void
+        SetNumMax: void
+        SetPoints: void
+
+Child Class:  SimpleGoal
+    Attributes:
+
+    Constructor:
+        SimpleGoal(goal, description, points): Goal(goal, description, points)
+
+    Behaviors:
+        RecordEvent:  override void
+        GetTotalPoints: override int
+
+Child Class:  EternalGoal
+    Attributes:
+
+    Constructor:
+        EternalGoal(goal, description, points): Goal(goal, description, points)
+
+    Behaviors:
+        RecordEvent:  override void
+        GetTotalPoints: override int
+
+Child Class:  ChecklistGoal
+    Attributes:
+    _bonusPoints: int
+    _numberToBonus: int
+
+    Constructor:
+        ChecklistGoal(goal, description, points, numberToBonus, bonusPoints): Goal(goal, description, points)
+
+    Behaviors:
+        RecordEvent:  override void
+        GetTotalPoints: override int
+
+Class: FileHandler
+    Attributes:
+        _filename: string
+        _goalsList: List<string>
+
+    Constructor:
+    FileHandler (filepath, goalsList)
+
+    Behaviors:
+        WriteFile: void
+        ReadFile: void
+
+Class:  Menu
+    Attributes:
+        _menuList: List<string>
+        _userEntry: int
+
+    Constructor:
+        Menu(){
+            BuildMenuList
+        }
+
+    Behaviors:
+        DisplayMenu: int
+        GetMenuCount: int
+        BuildMenuList: void
+

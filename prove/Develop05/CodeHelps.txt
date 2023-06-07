@@ -1,0 +1,50 @@
+READING TEXT FILES:
+    Read entire file into an array of strings (one per line)
+    use System.IO.File.ReadAllLines()
+    Then iterate through each string
+    As you go through, split based on a seperator character 
+
+        string filename = "myFile.txt";
+        string[] lines = System.IO.File.ReadAllLines(filename);
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(",");
+
+            string firstName = parts[0];
+            string lastName = parts[1];
+        }
+
+WRITING TXT FILES:
+        You can create or write a text file in C# using a class the System.IO.StreamWriter class. When you create an object of this class you can use the Write() and WriteLine() methods in the same way as the Console.Write() methods, except that they will write the strings to the file instead of to the Console.
+
+        To make sure the file gets closed and cleaned up appropriately when you are done, it is best practice to put the StreamWriter object in a using() block. This works the same as a "with" block in Python and ensures that the resources are cleaned up when you leave that area of the code.
+
+        The following shows an example of writing text to a new file
+        // Don't forget to put this at the top, so C# knows where to find the StreamWriter class
+        using System.IO; 
+
+        ...
+
+            string fileName = "myFile.txt";
+
+            using (StreamWriter outputFile = new StreamWriter(filename))
+            {
+                // You can add text to the file with the WriteLine method
+                outputFile.WriteLine("This will be the first line in the file.");
+                
+                // You can use the $ and include variables just like with Console.WriteLine
+                string color = "Blue";
+                outputFile.WriteLine($"My favorite color is {color}");
+            }
+
+SAVING AND LOADING OBJECTS:
+    Turning an object into a string so that you can save it, load it, or send it to another program on the internet, is called "Serializing" and "Deserializing" it. Depending on how complicated your object is, this can require you to be somewhat clever in how it is done. There are libraries of functions that others have written to help serialize and deserialize objects into various formats (for example, JSON, XML, etc.). While you are welcome to use one of these if you would like, they can often take a fair amount of work to configure correctly, so for our simple case, it is probably easier to not use one of them.
+
+    Instead, consider creating a method that returns a string containing the pieces of data that you need for your object, such as: GetStringRepresentation(). This might include the type of the object first (so you'll know later which one you should be using), and then any details of the object. For example, if you had a Person object, it might return a string like this: "Person:Brigham,Young".
+
+    Then, if you wanted to save a whole list of people, you could iterate through them and for each one, call the GetStringRepresentation() method and then save the string out to a file.
+
+    Similarly, when it is time to load the file, you could read in the line, and first split it based on the colon : to get the type of the object (Person) and the details ("Brigham,Young"). Then, you could create a method called CreatePerson that would accept the string of details ("Brigham,Young"). This method could split the string on the commas to get the various items. Then, it could create a new Person object, set all the values, and return it.
+
+    As a side note, this pattern of creating a method (or a class) to help create objects for you is common enough that it has a name: The Factory Pattern. In future courses, you will learn more about the Factory Pattern, and how to handle many of the complexities that could arise when creating objects.
