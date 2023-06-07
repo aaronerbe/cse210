@@ -1,88 +1,85 @@
 Parent abstract Class:  Goal
     Attributes:
-    _goal: string
-    _description: string
-    _complete: bool
-    _points: int
-    _numDone: int
-    _numMax: int
+        private _goal: string
+        private _description: string
+        private _complete: bool
+        private _points: int
+        private _numDone: int
+        private _numMax: int
         
     Constructor:
-        Goal(goal, description, points)
+        public Goal(goal, description, points)
 
     Behaviors:
-        RecordEvent: abstract
-        GetTotalPOints: abstract
+        public RecordEvent: abstract
+        public GetTotalPOints: abstract
         
-        IsComplete: bool
-        GetGoal: string
-        GetPoints: int
-        GetNumDone: int
-        GetNumMax: int
-        
-        SetGoal: void
-        SetDescription: void
-        SetComplete: void
-        SetNumDone: void
-        SetNumMax: void
-        SetPoints: void
+        public IsComplete: bool
+        public GetGoal: string
+        public GetPoints: int
+        public GetNumDone: int
+        public GetNumMax: int
+
+        public SetGoal: void
+        public SetDescription: void
+        public SetComplete: void
+        public SetNumDone: void
+        public SetNumMax: void
+        public SetPoints: void
 
 Child Class:  SimpleGoal
     Attributes:
 
     Constructor:
-        SimpleGoal(goal, description, points): Goal(goal, description, points)
+        public SimpleGoal(goal, description, points): Goal(goal, description, points)
 
     Behaviors:
-        RecordEvent:  override void
-        GetTotalPoints: override int
+        public RecordEvent:  override void
+        public GetTotalPoints: override int
 
 Child Class:  EternalGoal
     Attributes:
 
     Constructor:
-        EternalGoal(goal, description, points): Goal(goal, description, points)
+        public EternalGoal(goal, description, points): Goal(goal, description, points)
 
     Behaviors:
-        RecordEvent:  override void
-        GetTotalPoints: override int
+        public RecordEvent:  override void
+        public GetTotalPoints: override int
 
 Child Class:  ChecklistGoal
     Attributes:
-    _bonusPoints: int
-    _numberToBonus: int
+        private _bonusPoints: int
+        private _numberToBonus: int
 
     Constructor:
-        ChecklistGoal(goal, description, points, numberToBonus, bonusPoints): Goal(goal, description, points)
+        public ChecklistGoal(goal, description, points, numberToBonus, bonusPoints): Goal(goal, description, points)
 
     Behaviors:
-        RecordEvent:  override void
-        GetTotalPoints: override int
+        public RecordEvent:  override void
+        public GetTotalPoints: override int
 
 Class: FileHandler
     Attributes:
-        _filename: string
-        _goalsList: List<string>
+        private _filename: string
+        private _goalsList: List<string>
 
     Constructor:
-    FileHandler (filepath, goalsList)
+        public FileHandler (filepath, goalsList)
 
     Behaviors:
-        WriteFile: void
-        ReadFile: void
+        public WriteFile: void
+        public ReadFile: void
 
 Class:  Menu
     Attributes:
-        _menuList: List<string>
-        _userEntry: int
+        public _menuList: List<string>
+        public _userEntry: int
 
     Constructor:
-        Menu(){
-            BuildMenuList
-        }
+        public Menu(){ BuildMenuList }
 
     Behaviors:
-        DisplayMenu: int
-        GetMenuCount: int
-        BuildMenuList: void
-
+        public DisplayMenu: int
+        public GetMenuCount: int
+        private BuildMenuList: void
