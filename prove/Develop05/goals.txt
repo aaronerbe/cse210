@@ -1,0 +1,5 @@
+600
+SimpleGoal~~simple~~simple desc~~10~~True
+EternalGoal~~eternal~~eternal desc~~100
+ChecklistGoal~~checklist~~checklist desc~~50~~500~~3~~0
+EternalGoal~~test~~desc~~600

@@ -1,15 +1,18 @@
 public class SimpleGoal : Goal{
-    
-    public SimpleGoal(string goal, string description, int points) : base(goal, description, points){
+    public SimpleGoal(){
         base.SetNumMax(1);
     }
 
     public override void RecordEvent(){
-        base.SetComplete();
+        base.SetComplete(true);
         base.SetNumDone(1);
     }
 
-    public override int GetTotalPoints(){
-        return base.GetPoints() * base.GetNumDone();
+    //public override int GetTotalPoints(){
+    //    return base.GetPoints() * base.GetNumDone();
+    //}
+    public override string GetXofYSummary()
+    {
+        return "";
     }
 }
