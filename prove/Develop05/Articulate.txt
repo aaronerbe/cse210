@@ -1,0 +1,20 @@
+Polymorphism is setting up your classes such that methods can take on different forms depending on the context.  It is in conjunction with the Inheritance principle along with good abstraction and encapsulation.  Meaning, if you have a child class that needs methods to behave differently than the parent, you can utilize overriding.  In this way when your code calls the classes methods, it can use the correct method based whether it is a parent class or the child class.  
+
+For example, in my Eternal Quest program, I have a parent class Goal and 3 child classes (Simple Goal, Eternal Goal, Checklist Goal).  For each of these I have a method "Record Event" which needs to behave differently depending on the class.  In my Goals Parent class, I have "public abstract void RecordEvent();" which forces each child class to define it's own "RecordEvent() method.  So for my ChecklistGoal class, I have: 
+    public override void RecordEvent()
+    {
+        base.SetNumDone(1);
+            if (base.GetNumDone() >= base.GetNumMax()){
+            base.SetComplete(true);
+        }
+    }
+
+Where my EternalGoal class has this:
+    public override void RecordEvent(){
+        base.SetNumDone(1);
+    }
+
+Then when I call the RecordEvent it is generic and the code will call the correct method based on the context (or which class we are working with). 
+    goalsList[entry].RecordEvent(); 
+
+This demonstrates the power of Polymorphism.  When the classes are setup this way, it can be very flexible but the main code doesn't have to account for the flexibility.  It can stay generic and simple.  
