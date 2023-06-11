@@ -1,0 +1,57 @@
+public class Rewards2{
+    //private bool _reward = false;
+    //number of times needed to get a reward
+    private int _rewardTrigger = 0;
+    private int _completionCount = 0;
+    //different types of rewards based on the goals
+    //keep track of how many times user earned a reward
+    private int _numberOfRewards = 0;
+    private string _type = "";
+    private List<string> _rewardsEarned = new List<string>();
+    private List<string> _rewardsAvailable = new List<string>();
+    
+
+    public Rewards(int rewardTrigger, string type){
+        _rewardTrigger = rewardTrigger;
+        _type = type;
+        BuildRewardsAvailableList();
+    }
+
+    //public bool GetReward(){
+    //    return _reward;
+    //}
+
+    public bool AddAccomplishment(){
+        _completionCount ++;
+        if (_completionCount == _rewardTrigger){
+            //_reward = true;
+            _completionCount = 0;
+            _numberOfRewards ++;
+            AddReward();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void AddReward(){
+        //add next one in the list using _numberofRewards to track
+        if (_rewardsAvailable.Count() < _rewardsEarned.Count()){
+            _rewardsEarned.Add(_rewardsAvailable[_numberOfRewards-1]);
+        }
+        
+    }
+    public string GetReward(){
+        
+        return
+    }
+
+    public void BuildRewardsAvailableList(){
+        _rewardsAvailable.Add("Starter Badge");
+        _rewardsAvailable.Add("Persistent Badge");
+        _rewardsAvailable.Add("GoalSetter Badge");
+        _rewardsAvailable.Add("Master Badge");
+        _rewardsAvailable.Add("Legendary Badge");
+    }
+}

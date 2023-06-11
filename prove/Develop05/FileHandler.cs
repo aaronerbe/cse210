@@ -3,6 +3,7 @@ class FileHandler {
     private int _totalPoints;
     private List<Goal> _goalList = new List<Goal>();
     private string _csvDelimiter = "~~";
+    private bool _new = false;
 
     public FileHandler(string filepath, List<Goal> goalList, int totalPoints){
         _filepath = filepath;
@@ -35,6 +36,7 @@ class FileHandler {
     }
 
     public List<Goal> ReadFile(){
+        //tells the goal it's not a new goal but an existing one we read in from a file...
         using (StreamReader reader = new StreamReader(_filepath)){
             string line = reader.ReadLine();
             string[] lineList = line.Split(_csvDelimiter);
@@ -46,7 +48,7 @@ class FileHandler {
                 
                 switch (lineList[0]){
                     case "SimpleGoal":
-                        SimpleGoal s = new SimpleGoal();
+                        SimpleGoal s = new SimpleGoal(_new);
                         s.SetGoal(lineList[1]);
                         s.SetDescription(lineList[2]);
                         s.SetPoints(int.Parse(lineList[3]));
@@ -54,7 +56,7 @@ class FileHandler {
                         _goalList.Add(s);
                         break;
                     case "EternalGoal":
-                        EternalGoal e = new EternalGoal();
+                        EternalGoal e = new EternalGoal(_new);
                         e.SetGoal(lineList[1]);
                         e.SetDescription(lineList[2]);
                         e.SetPoints(int.Parse(lineList[3]));
@@ -62,7 +64,7 @@ class FileHandler {
                         _goalList.Add(e);
                         break;
                     case "ChecklistGoal":
-                        ChecklistGoal c = new ChecklistGoal();
+                        ChecklistGoal c = new ChecklistGoal(_new);
                         c.SetGoal(lineList[1]);
                         c.SetDescription(lineList[2]);
                         c.SetPoints(int.Parse(lineList[3]));
