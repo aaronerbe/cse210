@@ -1,7 +1,7 @@
 //TODO change [0] to just be [ ] until at least 1 goal has been achieved.  then do [1]
 public class ChecklistGoal: Goal{
-    private Rewards r = new Rewards(5);
-    private string _reward = "";
+    private Rewards _rewards = new Rewards(5);
+    //private string _reward = "";
     
     public ChecklistGoal(bool isNew):base(isNew){
         //use isNew to determine if we need to ask questions (to build a new goal) or if we are reading from a file (existing goal)
@@ -22,8 +22,9 @@ public class ChecklistGoal: Goal{
             base.SetComplete(true);
         }
         //capture the reward.  If a reward was earned it won't be an empty string.  else it'll be ""
-        _reward = r.TrackReward();
-        return _reward;
+        //_reward = r.TrackReward();
+        //return _reward;
+        return _rewards.TrackReward();
     }
     public override int GetPoints(){
         //if (base.GetNumDone() >= _numberToBonus){

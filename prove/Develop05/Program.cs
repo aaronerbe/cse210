@@ -23,7 +23,7 @@ class Program
         Console.WriteLine($"You have {totalPoints} points.\n");
         int userMainEntry = MainMenu.DisplayMenu();
 
-        while (userMainEntry != 6){
+        while (userMainEntry != 7){
             switch (userMainEntry){
                 case 1:
                     GoalMenu GoalsMenu = new GoalMenu ();
@@ -54,18 +54,23 @@ class Program
                     DisplayFullGoals(goalsList);
                     break;
                 case 3:
-                    //save goals
-                    FileHandler fWrite = new FileHandler(filename, goalsList, totalPoints);
-                    fWrite.WriteFile();
+                    //list rewards
+
                     break;
                 case 4:
+                    //save goals
+                    //TODO - add save rewards at same time
+                    FileHandler fWrite = new FileHandler(filename, goalsList, totalPoints);
+                    fWrite.WriteGoals();
+                    break;
+                case 5:
                     //Load goals
                     FileHandler fRead = new FileHandler(filename, goalsList, totalPoints);
                     goalsList.Clear();
-                    goalsList = fRead.ReadFile();
+                    goalsList = fRead.ReadGoals();
                     totalPoints = fRead.GetTotalPoints();
                     break;
-                case 5:
+                case 6:
                     //record event
                     DisplayGoals(goalsList);
                     Console.Write("Which goal did you accomplish? ");
@@ -76,6 +81,10 @@ class Program
             Console.Clear();
             Console.WriteLine($"You have {totalPoints} points.\n");
             userMainEntry = MainMenu.DisplayMenu();
+        }
+
+        static void DisplayRewards(){
+            //need a list that saves the rewards...
         }
 
         //lists everything about the goal

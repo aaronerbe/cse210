@@ -4,13 +4,13 @@ public class Rewards{
     //TODO:  Animation when achieving a goal
 
     //keep track of how many rewards given.  So we can increment them each time.  Start w/ -1 so it aligns with the _rewards list (give a reward and this becomes 0, which is the 1st rewards in the list)
-    int _rewardsEarned = -1;
+    private  int _rewardsEarned = -1;
     //keep track of how many goals met leading to a reward
     private int _goalsCounter = 0;
     //declare what the trigger is to get a reward
     private int _rewardTrigger = 5;
     //Dictionary to manage key value pair.  INtegers tied to rewards
-    Dictionary<int, string> _rewards = new Dictionary<int, string>();
+    private Dictionary<int, string> _rewards = new Dictionary<int, string>();
 
     //when Goal creates Rewards class, it sets the rewardTrigger (how many goals complete until recieving a reward)
     public Rewards(int rewardTrigger){
@@ -24,7 +24,6 @@ public class Rewards{
 
         if (_goalsCounter == _rewardTrigger){
             _goalsCounter = 0;
-
             //_rewardsEarned.Add(_rewardsEarned.Count()+1);
             _rewardsEarned++;
             return _rewards[_rewardsEarned];
@@ -41,5 +40,4 @@ public class Rewards{
         _rewards.Add(i++,"Master");
         _rewards.Add(i++,"Legend");
     }
-
 }

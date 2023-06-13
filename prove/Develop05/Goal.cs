@@ -11,7 +11,7 @@ public abstract class Goal{
 
     public Goal(bool isNew){
         _isNew = isNew;
-        //using _numMax as a trigger to determine if the goal has been created before or if we are reading an existing in from a file (which means we don't need to ask user for all the info, just reset all the attributes)
+        //using _isNew as a trigger to determine if the goal has been created before or if we are reading an existing in from a file (which means we don't need to ask user for all the info, just reset all the attributes)
         if (_isNew){
             Console.Clear();
             Console.WriteLine("What is the name of your goal?  ");
@@ -23,9 +23,7 @@ public abstract class Goal{
             Console.WriteLine("What is the amount of points associated with this goal?  ");
             _points = int.Parse(Console.ReadLine());
             //g.SetPoints(int.Parse(Console.ReadLine()));
-
         }
-
     }
 
     //OVERRIDES

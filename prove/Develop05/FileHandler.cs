@@ -1,3 +1,6 @@
+//TODO  group the goals by type
+//TODO capture the awards earned by type as well?
+
 class FileHandler {
     private string _filepath;
     private int _totalPoints;
@@ -11,11 +14,10 @@ class FileHandler {
         _totalPoints = totalPoints;
     }
 
-    public void WriteFile(){
+    public void WriteGoals(){
         string line = "";
 
         using (StreamWriter writer = new StreamWriter(_filepath)){
-            //enter the current date/time
             writer.WriteLine(_totalPoints);
 
             foreach (Goal g in _goalList){
@@ -35,7 +37,7 @@ class FileHandler {
         } 
     }
 
-    public List<Goal> ReadFile(){
+    public List<Goal> ReadGoals(){
         //tells the goal it's not a new goal but an existing one we read in from a file...
         using (StreamReader reader = new StreamReader(_filepath)){
             string line = reader.ReadLine();
