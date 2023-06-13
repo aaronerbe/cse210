@@ -1,22 +1,32 @@
 using System;
 //TODO:  Work on Extras...
-//TODO - add a way to display rewards earned
-//TODO - add rewards to the saved file & a way to read in and re-add them to the goal class
 //TODO - catch if trying to record and no goals exist
-//TODO - what to do about Simple goal rewards.  perhaps not do it and only do rewards for eternal goals?
+//TODO - stop awards when full count
+//TODO - catch cases of invalid inputs, etc
+//TODO - Comments
 //!EXTRA - checkbox is a little clearer.  Infitinity symbol for eternal goals.  x from X|Y in the checklist goal.  
 //!EXTRA - Reward badges given for doing x number of achivements for a given goal.  
-
+//TODO - figure out if below functiosn need static or private or public or left alone...
 
 class Program
 {
     static void Main(string[] args)
     {
+        //used to create a rewards class for each goal type (simple, eternal, checklist)
+        //seting up as a list so I can simply loop through it when recording.  I may regret this later?
+        List<Rewards> rewardsList = new List<Rewards>(){
+            new SimpleRewards(5),
+            new EternalRewards (5),
+            new ChecklistRewards(5)
+        };
+        
+
         //used to decide if we are creating a new goal or reading it in.
         bool isNew = true;
         List<Goal> goalsList = new List<Goal>();
         int totalPoints = 0;
-        string filename = "goals.txt";
+        string goalFilename = "goals.txt";
+        string rewardsFilename = "rewards.txt";
 
         MainMenu MainMenu = new MainMenu();
         Console.Clear();
@@ -55,20 +65,24 @@ class Program
                     break;
                 case 3:
                     //list rewards
-
+                        DisplayRewards(rewardsList);
                     break;
                 case 4:
                     //save goals
                     //TODO - add save rewards at same time
-                    FileHandler fWrite = new FileHandler(filename, goalsList, totalPoints);
+                    FileHandler fWrite = new FileHandler(goalFilename, rewardsFilename,rewardsList, goalsList, totalPoints);
                     fWrite.WriteGoals();
+                    fWrite.WriteRewards();
                     break;
                 case 5:
                     //Load goals
-                    FileHandler fRead = new FileHandler(filename, goalsList, totalPoints);
+                    FileHandler fRead = new FileHandler(goalFilename, rewardsFilename,rewardsList, goalsList, totalPoints);
                     goalsList.Clear();
                     goalsList = fRead.ReadGoals();
                     totalPoints = fRead.GetTotalPoints();
+                    //read in rewards and then pass to rebuildrewards so we can assign all the info to the classes...
+                    rewardsList.Clear();
+                    rewardsList=fRead.ReadRewards();
                     break;
                 case 6:
                     //record event
@@ -83,8 +97,23 @@ class Program
             userMainEntry = MainMenu.DisplayMenu();
         }
 
-        static void DisplayRewards(){
-            //need a list that saves the rewards...
+        static void DisplayRewards(List<Rewards> rewardsList){
+            Console.Clear();
+            foreach(Rewards r in rewardsList){
+                
+                string line = ($"{r.GetType().Name}:\n    ");
+                //string line = "";
+
+                List<string> rewardsString = new List<string>(r.GetRewards());
+                for(int i = 1; i<rewardsString.Count(); i++){
+                    line += $"{rewardsString[i]}, ";
+                }
+                
+                Console.WriteLine(line);
+            }
+
+            Console.WriteLine("\nPress Enter to Continue: ");
+            Console.ReadLine();
         }
 
         //lists everything about the goal
@@ -109,22 +138,34 @@ class Program
             }
         }
 
-        static int RecordGoal(int entry, List<Goal> goalsList, int totalPoints){
+        int RecordGoal(int entry, List<Goal> goalsList, int totalPoints){
             int pointsEarned = 0;
-            string reward = goalsList[entry].RecordEvent();
+            goalsList[entry].RecordEvent();
             //get points earned
             pointsEarned = goalsList[entry].GetPoints();
             Console.WriteLine($"\nCongratulations! You have earned {pointsEarned} points.");
             Console.WriteLine($"You now have {pointsEarned + totalPoints} points.\n");
             
-            //check if reward is an empty string.  If it's not that means they earned a reward.  Display it to the screen.  
-            if (reward != ""){
-                Console.WriteLine($"\n\nCongratulations!  You've earned {goalsList[entry].GetType().Name} {reward}.  Keep Up the Good work!\n\n");
-            }
+            RecordReward(goalsList[entry].GetType().Name);
 
             Console.WriteLine("Press Enter to return to Main Menu:  ");
             Console.ReadLine();
             return pointsEarned;
+        }
+
+        void RecordReward(string goal){
+            string reward = "";
+            //Console.WriteLine($"goal is {goal}");
+            foreach(Rewards r in rewardsList){
+                //Console.WriteLine(r.GetType().Name);
+                if (r.GetType().Name.Contains(goal.Substring(0,5))){
+                    reward = r.TrackReward();
+                }
+            }
+            //check if reward is an empty string.  If it's not that means they earned a reward.  Display it to the screen.  
+            if (!string.IsNullOrEmpty(reward)){
+                Console.WriteLine($"\n\nCongratulations!  You've earned {goal}: {reward}.  Keep Up the Good work!\n\n");
+            }
         }
     }
 }

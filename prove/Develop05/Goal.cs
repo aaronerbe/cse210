@@ -27,7 +27,7 @@ public abstract class Goal{
     }
 
     //OVERRIDES
-    public abstract string RecordEvent();
+    public abstract void RecordEvent();
     //public abstract int GetTotalPoints();
     public abstract string GetXofYSummary();
     //return an X to mark it as complete

@@ -6,10 +6,11 @@ public class MainMenu : Menu{
         base.AddMenuItem("Menu Options\n");
         base.AddMenuItem("1. Create New Goal\n");
         base.AddMenuItem("2. List Goals\n");
-        base.AddMenuItem("3. Save Goals\n");
-        base.AddMenuItem("4. Load Goals\n");
-        base.AddMenuItem("5. Record Event\n");
-        base.AddMenuItem("6. Quit\n");
+        base.AddMenuItem("3. List Rewards\n");
+        base.AddMenuItem("4. Save Goals & Rewards\n");
+        base.AddMenuItem("5. Load Goals & Rewards\n");
+        base.AddMenuItem("6. Record Event\n");
+        base.AddMenuItem("7. Quit\n");
         base.AddMenuItem("Select a choice from the menu:  ");
     }
 }

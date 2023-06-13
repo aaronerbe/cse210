@@ -1,5 +1,4 @@
-public class Rewards{
-    //TODO:  Create lists based on different goals.  Take that input (goal type) to pick which list to build??
+public abstract class Rewards{
     //TODO:  What to do when end of the rewards list!!!
     //TODO:  Animation when achieving a goal
 
@@ -33,11 +32,32 @@ public class Rewards{
         }
     }
 
-    private void BuildRewards(){
-        int i = 0;
-        _rewards.Add(i++,"Starter");
-        _rewards.Add(i++,"Persistence");
-        _rewards.Add(i++,"Master");
-        _rewards.Add(i++,"Legend");
+    public abstract void BuildRewards();
+    
+    //used so child class can add custom rewards based on it's type (eternal, simple, etc)
+    public void AddRewardItem(int i, string rewardItem){
+        _rewards.Add(i,rewardItem);
     }
+
+    public List<string> GetRewards(){
+        List<string> rewardsEarnedList = new List<string>(){""};
+        
+        if (_rewardsEarned!=-1){
+            for (int i = 0; i<_rewardsEarned; i++){
+                rewardsEarnedList.Add(_rewards[i]);        
+            }
+        }
+        return rewardsEarnedList;
+    }
+    public int GetGoalsCounter(){
+        return _goalsCounter;
+    }
+
+    public void SetRewardsEarned(int rewardsEarned){
+        _rewardsEarned = rewardsEarned;
+    }
+    public void SetGoalsCounter(int goalsCounter){
+        _goalsCounter = goalsCounter;
+    }
+
 }
