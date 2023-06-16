@@ -4,6 +4,7 @@ public class GoalMenu : Menu{
         BuildMenu();
     }
     public override void BuildMenu(){
+        //create unique Goal menu
         base.AddMenuItem("The types of Goals are:\n");
         base.AddMenuItem("1. Simple Goal\n");
         base.AddMenuItem("2. Eternal Goal\n");

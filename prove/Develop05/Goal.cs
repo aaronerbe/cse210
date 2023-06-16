@@ -1,10 +1,17 @@
 public abstract class Goal{
+    //goal name
     private string _goal;
+    //goal description
     private string _description;
+    //tracks if the goal has been completed.  used to display checkmarks if applicable
     private bool _complete = false;
+    //how many points the goal is worth
     private int _points = 0;
+    //how many bonus points user recieves if number of completions meets the max criteria
     private int _bonusPoints = 0;
+    //tracks how many times they've compelted the goal (used for checklist)
     private int _numDone = 0;
+    //sets the trigger to determine if they've completed the goal
     private int _numMax = 0;
     //used to decide if it's a new goal or one read in from file (decides if we need to ask user questions or not)
     private bool _isNew;
@@ -16,22 +23,26 @@ public abstract class Goal{
             Console.Clear();
             Console.WriteLine("What is the name of your goal?  ");
             _goal = Console.ReadLine();
-            //g.SetGoal(Console.ReadLine());
             Console.WriteLine("What is a short description of it?  ");
             _description = Console.ReadLine();
-            //g.SetDescription(Console.ReadLine());
+            //loop until user gives valid integer for input
             Console.WriteLine("What is the amount of points associated with this goal?  ");
-            _points = int.Parse(Console.ReadLine());
-            //g.SetPoints(int.Parse(Console.ReadLine()));
+            //_points = int.Parse(Console.ReadLine());
+            //check if it can parse to integer, if not (false), loop till they get it right
+            while (!int.TryParse(Console.ReadLine(),out _points)){
+                Console.Clear();
+                Console.WriteLine("Please enter a valid number.\nWhat is the amount of points associated with this goal?  ");
+            }
         }
     }
 
     //OVERRIDES
+    //each child class records things slightly differently.  
     public abstract void RecordEvent();
-    //public abstract int GetTotalPoints();
+    //child class handles diff.  E.g. Simple doesn't keep track of x complete out of y times to signoff the goal
     public abstract string GetXofYSummary();
-    //return an X to mark it as complete
     public virtual string GetCheckBox(){
+        //return an X to mark it as complete
         if (_complete){
             return "X";
         }

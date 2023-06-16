@@ -3,6 +3,7 @@ public class MainMenu : Menu{
         BuildMenu();
     }
     public override void BuildMenu(){
+        //create Main menu list
         base.AddMenuItem("Menu Options\n");
         base.AddMenuItem("1. Create New Goal\n");
         base.AddMenuItem("2. List Goals\n");

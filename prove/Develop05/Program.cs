@@ -1,5 +1,4 @@
 using System;
-//TODO - Comments
 //TODO - points - make sure it's valid int for points or number of times, etc and give user chance to give if they didn't
 //!EXTRA REWARDS:
     //Reward badges given for doing x number of achivements for a given goal.  
@@ -16,6 +15,7 @@ using System;
     //Handles List Goals, List Rewards, Record and Save when there are no goals yet.  
     //Handles when user selects an invalid goal option to record to
     //Handles when user gives invalid entry in the goals selection menu (not integer or not a valid number from the list)
+    //Handles when user doesn't give valid integer for points or bonus
 //!EXTRA - Listing Goals Clarity:
     //Checkbox is a little clearer.  Infitinity symbol for eternal goals.  x from X|Y for the checklist goal.  
 
