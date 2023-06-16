@@ -1,6 +1,3 @@
-//TODO  group the goals by type
-//TODO capture the awards earned by type as well?
-
 class FileHandler {
     private string _goalsFilePath;
     private string _rewardsFilePath;
@@ -53,7 +50,8 @@ class FileHandler {
                 if (lineList[0] == r.GetType().Name){
                     //set the info for that class
                     r.SetGoalsCounter(int.Parse(lineList[1]));
-                    r.SetRewardsEarned(lineList.Count()-2);
+                    // has to be -3 to remove the two other entries in the CSV (the goal type and the count of goals achieved towards a reward) - 1 more to align with the 0 index of the _rewards list (starts w/ 0, not 1)
+                    r.SetRewardsEarned(lineList.Count()-3);
                 }
             }
         }

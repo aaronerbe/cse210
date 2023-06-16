@@ -1,5 +1,4 @@
 public abstract class Rewards{
-    //TODO:  What to do when end of the rewards list!!!
     //TODO:  Animation when achieving a goal
 
     //keep track of how many rewards given.  So we can increment them each time.  Start w/ -1 so it aligns with the _rewards list (give a reward and this becomes 0, which is the 1st rewards in the list)
@@ -21,7 +20,11 @@ public abstract class Rewards{
     public string TrackReward(){
         _goalsCounter++;
 
-        if (_goalsCounter == _rewardTrigger){
+        //if rewardsEarned = count of _rewards list, it means we've exhuasted all the rewards to be earned.  So return nothing going fowards.  Needed so we don't overrun the list (try to return an index that doesn't exist)
+        if (_rewardsEarned + 1 == _rewards.Count()){
+            return "";
+        }
+        else if (_goalsCounter == _rewardTrigger){
             _goalsCounter = 0;
             //_rewardsEarned.Add(_rewardsEarned.Count()+1);
             _rewardsEarned++;
@@ -32,9 +35,10 @@ public abstract class Rewards{
         }
     }
 
+    //Overridden by child class to pass a custom list of rewards into the _rewards list.  
     public abstract void BuildRewards();
     
-    //used so child class can add custom rewards based on it's type (eternal, simple, etc)
+    //used so child class "BuildRewards" which builds the list of rewards.  Child class uses an override of BuildRewards, then calls this to add the specific list.
     public void AddRewardItem(int i, string rewardItem){
         _rewards.Add(i,rewardItem);
     }
@@ -43,7 +47,7 @@ public abstract class Rewards{
         List<string> rewardsEarnedList = new List<string>(){""};
         
         if (_rewardsEarned!=-1){
-            for (int i = 0; i<_rewardsEarned; i++){
+            for (int i = 0; i<=_rewardsEarned; i++){
                 rewardsEarnedList.Add(_rewards[i]);        
             }
         }

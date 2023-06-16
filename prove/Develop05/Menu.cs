@@ -11,8 +11,11 @@ public abstract class Menu{
         WriteMenuItems();
         //check for valid input, if not rewrite menu with modified msg
         bool isValidInput = CheckIfValid();
-
+        
+        //isValidInput is a bool based on trying to parse to int.  So if it's not an integer or if they give an integer out of the range of the menu, it'll keep rewriting
         while (!isValidInput || _userEntry > _menuList.Count -2 || _userEntry < 1){
+            Console.Clear();
+            Console.WriteLine("Invalid Entry.  Please choose a valid Menu Item.");
             WriteMenuItems();
             isValidInput = CheckIfValid();
         }
