@@ -1,5 +1,4 @@
 using System;
-//TODO - points - make sure it's valid int for points or number of times, etc and give user chance to give if they didn't
 //!EXTRA REWARDS:
     //Reward badges given for doing x number of achivements for a given goal.  
     //Reward Class + Subclass for each goal type.  Each goal type gets its own list of rewards.
