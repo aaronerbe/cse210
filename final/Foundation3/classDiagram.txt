@@ -1,0 +1,42 @@
+Class Event (Parent)
+    Attributes:
+        private _eventTitle: string
+        private _description: string
+        private _date: DateTime
+        private _time: DateTime
+        private _address: string
+    Constructor:
+        public Event(eventTitle:string, description:string, address:string, date:DateTime, time:DateTime)
+    Behaviors:
+        public GetStandardDesc: string
+        public GetFullDesc: string
+        public GetShortDesc: string
+
+Class Lecture (Child)
+    Attributes:
+        private _speaker: string
+        private _capacity: int
+    Constructor:
+        public Lecture(speaker:string, capacity:int)
+    Behaviors:
+
+Class Reception (Child)
+    Attributes:
+        private _rsvp: string
+    Constructor:
+        public Reception(rsvp:string)
+    Behaviors:
+    
+Class Outdoor (Child)
+    Attributes:
+        private _weatherForecast string
+    Constructor:
+        public Outdoor(weatherForecast:string)
+    Behaviors:
+
+Class Address
+    Attributes:
+    Constructor:
+    Behaviors:
+
+Once you have the classes in place, write a program that creates at least one event of each type and sets all of their values. Then, for event event, call each of the methods to generate the marketing messages and output their results to the screen.
