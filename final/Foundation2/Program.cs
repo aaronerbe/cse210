@@ -1,5 +1,4 @@
 using System;
-//TODO:  Need to provide cost information somewhere...?
 class Program
 {
     static void Main(string[] args)

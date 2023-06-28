@@ -1,13 +1,13 @@
 Class Order:
     Attributes:
-        _products: List<Product>
-        _customer: Customer
-        _IsUSAAddress: boolen
-        _sumOfProductPrices: float
-        _shippingCost: float
-        _totalPrice: float
+        private _products: List<Product>
+        private _customer: Customer
+        private _IsUSAAddress: boolen
+        private _sumOfProductPrices: float
+        private _shippingCost: float
+        private _totalPrice: float
     Constructors:
-        Order(productList:List<Product>, customer:Customer)
+        public Order(productList:List<Product>, customer:Customer)
     Behaviors:
         private GetTotalPrice: void
         private CalculateSumOfProductPrices: void
@@ -18,13 +18,13 @@ Class Order:
 
 Class Product:
     Attributes:
-        _productName: string
-        _productID: string
-        _productPrice: float
-        _totalProductPrice: float
-        _quantity: int
+        private _productName: string
+        private _productID: string
+        private _productPrice: float
+        private _totalProductPrice: float
+        private _quantity: int
     Constructors:
-        Product(productName:string, productID:string, productPrice:float, quantity:int)
+        public Product(productName:string, productID:string, productPrice:float, quantity:int)
     Behaviors:
         private CalculateTotalProductPrice: void
         public GetTotalPrice: float
@@ -32,11 +32,11 @@ Class Product:
 
 Class Customer:
     Attributes:
-        _customerName: string
-        _customerAddress: Address
-        _isUSAAddress: boolean
+        private _customerName: string
+        private _customerAddress: Address
+        private _isUSAAddress: boolean
     Constructors:
-        Customer(customerName:string, customerAddress:Address)
+        public Customer(customerName:string, customerAddress:Address)
     Behaviors:
         public SetUSAAddress: void
         public GetIsUSAAddress: boolean
@@ -44,13 +44,12 @@ Class Customer:
 
 Class Address:
     Attributes:
-        _streetAddress: string
-        _country: string
-        _isUSAAddress: boolean
+        private _streetAddress: string
+        private _country: string
+        private _isUSAAddress: boolean
     Constructors:
-        Address (streetAddress:string, country:string)
+        public Address (streetAddress:string, country:string)
     Behaviors:
         private SetCountryBoolean: void
         public GetIsUSAAddress: boolean
         public GetStreetAddress: string
-

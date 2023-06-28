@@ -8,31 +8,5 @@ Then, have your program iterate through the list of videos and for each one, dis
 
 Note: The YouTube example is just to give you a context for creating classes to store information. You will not actually be connecting to YouTube or downloading content in any way.
 
-1.  Class Video
-    Attributes
-        _title: string
-        _author: string
-        _length: int
-        _comments: list<Comment>
-        _commentsCount: int
-    Behaviors
-        GetCommentCount: int
-    Constructor
-2.  Class Comment
-    Attributes
-        _name: string
-        _comment: string
-    Behaiviors
-        GetComment: string
-        GetCommentAuthor: string
-    Cosntructor
-3.  Main:
-    Attributes
-    Behaviors
-        [For each video - iterate through and do these]
-        DisplayVideoTitle: void
-        DisplayVideoAuthor: void
-        DisplayVideoLenth: void
-        DisplayVideoCommentsCount: void
-        DisplayListOfComments: Void
+
 
