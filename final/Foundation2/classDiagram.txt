@@ -1,0 +1,56 @@
+Class Order:
+    Attributes:
+        _products: List<Product>
+        _customer: Customer
+        _IsUSAAddress: boolen
+        _sumOfProductPrices: float
+        _shippingCost: float
+        _totalPrice: float
+    Constructors:
+        Order(productList:List<Product>, customer:Customer)
+    Behaviors:
+        private GetTotalPrice: void
+        private CalculateSumOfProductPrices: void
+        private CalculateShipping: void
+        public GetShippingLabel: string
+        public GetPackingLabel: string
+        public GetFinalBillLabel: string
+
+Class Product:
+    Attributes:
+        _productName: string
+        _productID: string
+        _productPrice: float
+        _totalProductPrice: float
+        _quantity: int
+    Constructors:
+        Product(productName:string, productID:string, productPrice:float, quantity:int)
+    Behaviors:
+        private CalculateTotalProductPrice: void
+        public GetTotalPrice: float
+        public GetPackingLabel: string
+
+Class Customer:
+    Attributes:
+        _customerName: string
+        _customerAddress: Address
+        _isUSAAddress: boolean
+    Constructors:
+        Customer(customerName:string, customerAddress:Address)
+    Behaviors:
+        public SetUSAAddress: void
+        public GetIsUSAAddress: boolean
+        public GetCustomerAddress: string
+
+Class Address:
+    Attributes:
+        _streetAddress: string
+        _country: string
+        _isUSAAddress: boolean
+    Constructors:
+        Address (streetAddress:string, country:string)
+    Behaviors:
+        private SetCountryBoolean: void
+        public GetIsUSAAddress: boolean
+        public GetStreetAddress: string
+
