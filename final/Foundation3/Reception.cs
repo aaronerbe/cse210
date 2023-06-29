@@ -1,12 +1,13 @@
 class Reception:Event{
-    //TODO not sure what I'm tracking here yet.  number of rsvp?  boolean that someone rsvp?  what?
-    //TODO:  "this includes an email for RSVP."  So need to change rsvp to an email string "_rsvpEmail"
-    private int _rsvp;
 
-    public Reception(string eventType, string eventTitle, string description, Address address, string date, string time) :base(eventType, eventTitle, description, address, date, time){
+    private string _email = "";
+
+    public Reception(string eventType, string eventTitle, string description, Address address, string date, string time,string email) :base(eventType, eventTitle, description, address, date, time){
+        _email = email;
     }
 
-    public void SetRSVP(int rsvp){
-        _rsvp = rsvp;
+    public override string GetFullDesc(){
+        string description = $"Full\n{base.GetEventType()}\n{base.GetTitle()}\n{base.GetDescription()}\nRSVP Here: {_email}\n{base.GetDate()} at {base.GetTime()}\n{base.GetAddress().GetAddress()}";
+        return description;
     }
 }

@@ -1,5 +1,6 @@
 Class Event (Parent)
     Attributes:
+        private _eventType: string
         private _eventTitle: string
         private _description: string
         private _date: DateTime
@@ -8,8 +9,14 @@ Class Event (Parent)
     Constructor:
         public Event(eventTitle:string, description:string, address:string, date:DateTime, time:DateTime)
     Behaviors:
+        public GetEventType: string
+        public GetTitle: string
+        public GetDescription: string
+        public GetAddress: Address
+        public GetDate: string
+        public GetTime: string
         public GetStandardDesc: string
-        public GetFullDesc: string
+        public virtual GetFullDesc: string
         public GetShortDesc: string
 
 Class Lecture (Child)
@@ -17,26 +24,41 @@ Class Lecture (Child)
         private _speaker: string
         private _capacity: int
     Constructor:
-        public Lecture(speaker:string, capacity:int)
+        public Lecture(speaker:string, capacity:int eventType:string, eventTitle:string, address:Address, date:string, time:string) base(eventType, eventTitle, description, address, date, time)
     Behaviors:
+        public override GetFullDesc()
 
 Class Reception (Child)
     Attributes:
         private _rsvp: string
     Constructor:
-        public Reception(rsvp:string)
+        public Reception(rsvp:string, eventType:string, eventTitle:string, address:Address, date:string, time:string) base(eventType, eventTitle, description, address, date, time)
     Behaviors:
+        public override GetFullDesc()
+
     
 Class Outdoor (Child)
     Attributes:
         private _weatherForecast string
     Constructor:
-        public Outdoor(weatherForecast:string)
+        public Outdoor(weatherForecast:string, eventType:string, eventTitle:string, address:Address, date:string, time:string) base(eventType, eventTitle, description, address, date, time)
     Behaviors:
+        public override GetFullDesc()
 
 Class Address
     Attributes:
+        private _eventAddress: string
     Constructor:
+        public Address(address: string)
     Behaviors:
+        public GetAddress: string
 
-Once you have the classes in place, write a program that creates at least one event of each type and sets all of their values. Then, for event event, call each of the methods to generate the marketing messages and output their results to the screen.
+Class FileHandler
+    Attributes:
+        private _filename: string
+        private _outputFile: string
+    Constructor:
+        public FileHandler(filename:string)
+    Behaviors:
+        public ReadFile(): List<Event>
+        public WriteFile(): void
