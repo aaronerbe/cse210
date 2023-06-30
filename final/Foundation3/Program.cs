@@ -27,7 +27,7 @@ class Program
     }
     
     //!NOTE I added a WriteFile to dump it to a file for easier viewing instead of just scrolling through console...  Simply for debug
-   static void StandardDisplayEvents(Event e, FileHandler f){
+    static void StandardDisplayEvents(Event e, FileHandler f){
             //Calls the Standard Description method
             Console.WriteLine($"{e.GetStandardDesc()}\n");
             f.WriteFile(e.GetStandardDesc());

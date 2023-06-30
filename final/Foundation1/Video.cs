@@ -15,25 +15,6 @@ class Video{
         _commentCount = _comments.Count();
     }
 
-    //
-    //public string GetVideoTitle(){
-    //    return _title;
-    //}
-    //public string GetVideoAuthor(){
-    //    return _author;
-    //}
-    //public int GetVideoLength(){
-    //    return _length;
-    //}
-    //public int GetCommentCount(){
-    //    //return _commentCount;
-    //    return _comments.Count();
-    //}
-
-    //public List<Comment> GetCommentsList(){
-    //    return _comments;
-    //}
-
     public void DisplayVideoInfo(){
         string line;
         line = $"{_title}\n{_author}\n{_length}\n{_commentCount}\n";

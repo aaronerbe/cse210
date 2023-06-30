@@ -1,5 +1,5 @@
 class Address{
-    string _eventAddress;
+    private string _eventAddress;
 
     //Simply pass address to the Address Class
     public Address(string address){
