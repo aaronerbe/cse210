@@ -1,0 +1,197 @@
+FOUNDATION 1
+------------
+1Class Video
+    Attributes
+        private _title: string
+        private _author: string
+        private _length: int
+        private _comments: list<Comment>
+        private _commentsCount: int
+    Constructor
+        public Video(title:string, author:string, length:int, comments: List<Comment>)
+    Behaviors
+        public DisplayVideoInfo: void
+
+Class Class Comment
+    Attributes
+        private _name: string
+        private _comment: string
+    Constructor
+        public Comment(name:string, comment:string)
+    Behaiviors
+        public GetComment: string
+        public GetCommentAuthor: string
+
+Class FileHandler
+    Attributes:
+        private _filename: string
+        private _videoList: List<Video>
+        private _csvDelimiter: string
+    Constructor
+        public FileHandler(filename:string)
+    Behaviors:
+        public ReadFile: List<Video>
+
+FOUNDATION 2
+------------
+Class Order:
+    Attributes:
+        private _products: List<Product>
+        private _customer: Customer
+        private _IsUSAAddress: boolen
+        private _sumOfProductPrices: float
+        private _shippingCost: float
+        private _totalPrice: float
+    Constructors:
+        public Order(productList:List<Product>, customer:Customer)
+    Behaviors:
+        private GetTotalPrice: void
+        private CalculateSumOfProductPrices: void
+        private CalculateShipping: void
+        public GetShippingLabel: string
+        public GetPackingLabel: string
+        public GetFinalBillLabel: string
+
+Class Product:
+    Attributes:
+        private _productName: string
+        private _productID: string
+        private _productPrice: float
+        private _totalProductPrice: float
+        private _quantity: int
+    Constructors:
+        public Product(productName:string, productID:string, productPrice:float, quantity:int)
+    Behaviors:
+        private CalculateTotalProductPrice: void
+        public GetTotalPrice: float
+        public GetPackingLabel: string
+
+Class Customer:
+    Attributes:
+        private _customerName: string
+        private _customerAddress: Address
+        private _isUSAAddress: boolean
+    Constructors:
+        public Customer(customerName:string, customerAddress:Address)
+    Behaviors:
+        public SetUSAAddress: void
+        public GetIsUSAAddress: boolean
+        public GetCustomerAddress: string
+
+Class Address:
+    Attributes:
+        private _streetAddress: string
+        private _country: string
+        private _isUSAAddress: boolean
+    Constructors:
+        public Address (streetAddress:string, country:string)
+    Behaviors:
+        private SetCountryBoolean: void
+        public GetIsUSAAddress: boolean
+        public GetStreetAddress: string
+
+FOUNDATION 3
+------------
+Class Event (Parent)
+    Attributes:
+        private _eventType: string
+        private _eventTitle: string
+        private _description: string
+        private _date: DateTime
+        private _time: DateTime
+        private _address: string
+    Constructor:
+        public Event(eventTitle:string, description:string, address:string, date:DateTime, time:DateTime)
+    Behaviors:
+        public GetEventType: string
+        public GetTitle: string
+        public GetDescription: string
+        public GetAddress: Address
+        public GetDate: string
+        public GetTime: string
+        public GetStandardDesc: string
+        public virtual GetFullDesc: string
+        public GetShortDesc: string
+
+Class Lecture (Child)
+    Attributes:
+        private _speaker: string
+        private _capacity: int
+    Constructor:
+        public Lecture(speaker:string, capacity:int eventType:string, eventTitle:string, address:Address, date:string, time:string) base(eventType, eventTitle, description, address, date, time)
+    Behaviors:
+        public override GetFullDesc()
+
+Class Reception (Child)
+    Attributes:
+        private _rsvp: string
+    Constructor:
+        public Reception(rsvp:string, eventType:string, eventTitle:string, address:Address, date:string, time:string) base(eventType, eventTitle, description, address, date, time)
+    Behaviors:
+        public override GetFullDesc()
+
+Class Outdoor (Child)
+    Attributes:
+        private _weatherForecast string
+    Constructor:
+        public Outdoor(weatherForecast:string, eventType:string, eventTitle:string, address:Address, date:string, time:string) base(eventType, eventTitle, description, address, date, time)
+    Behaviors:
+        public override GetFullDesc()
+
+Class Address
+    Attributes:
+        private _eventAddress: string
+    Constructor:
+        public Address(address: string)
+    Behaviors:
+        public GetAddress: string
+
+Class FileHandler
+    Attributes:
+        private _filename: string
+        private _outputFile: string
+    Constructor:
+        public FileHandler(filename:string)
+    Behaviors:
+        public ReadFile(): List<Event>
+        public WriteFile(): void
+
+FOUNDATION 4
+------------
+Class Activity: Abstract
+    Attributes:
+        private _date: string
+        private _activityLength: string
+
+    Constructor:
+        public Activity(date:string, activityLength:string)
+    Behaviors:
+        public virtual GetDistance: float
+        public virtual GetSpeed: float
+        public virtual GetPace: float
+        public virtual GetActivityLength: float
+        public GetSummary(): string
+
+Class Running (child)
+    Attributes:
+        private _distance: float
+    Constructor:
+        public Running(distance: float, date:string, activityLength:string) :base(date, activityLength)
+    Behaviors:
+        public override GetDistance: float
+
+Class StationaryBicicle (child)
+    Attributes:
+        private _speed: float
+    Constructor:
+        public StationaryBicicle(speed:float, date:string, activityLength:string) :base(date, activityLength)
+    Behaviors:
+        public override GetSpeed: float
+
+Class Swimming (child)
+    Attributes:
+        private _laps: int
+    Constructor:
+        public Swimming(laps:int, date:string, activityLength:string, distance:float) :base(date, activityLength)
+    Behaviors:
+        public override GetDistance: float

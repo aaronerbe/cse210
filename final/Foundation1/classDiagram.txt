@@ -1,4 +1,6 @@
-1.  Class Video
+FOUNDATION 1:
+-------------
+Class Video
     Attributes
         private _title: string
         private _author: string
