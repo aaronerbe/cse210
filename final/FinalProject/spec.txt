@@ -1,0 +1,99 @@
+vrbo for sailboats
+
+classes
+Class Main
+    List<Listing> _listings
+
+
+    Class Listing
+        List<Review> _reviews
+
+
+        Class Owner
+            Class ContactInfo
+                Attributes:
+                    private _name: string
+                    private _phoneNumber: string
+                    private _email: string
+                Constructors:
+                    public ContactInfo()
+                Methods:
+                    public string GetName()
+                    public string GetPhoneNumber()
+                    public string GetEmail()
+
+        Class Boat
+            Attributes:
+                
+            Constructor:
+                public Boat()
+            Method:
+                public GetBoat()
+
+                Class Specs
+                    Attributes:
+                        private string _boatClass
+                        private string _make
+                        private string _model
+                        private string _year
+                        private int _length
+                    Constructors:
+                        public Specs()
+                    Methods:
+                        public string GetBoatClass()
+                        public string GetMake()
+                        public string GetModel()
+                        public string GetYear()
+                        public int GetLength()
+
+                Class Features
+                    Attributes:
+                        private _beds
+                        private _births
+                        private _engines
+                        private _description
+                    Constructors:
+                        public Features()
+                    Methods:
+                        public int GetBeds()
+                        public int GetBirths()
+                        public string GetEngines()
+                        public string GetDescription()
+
+                Class Image
+                    Attributes:
+                        private img _image
+                    Constructors:
+                        public Image()
+                    Methods:
+                        public GetImage()
+
+
+        Class Location
+            _city
+            _state
+            _port
+
+        Class Cost
+            _cost
+            _cleaningFees
+            _dieselFees
+
+        Class Schedule
+            _availableRange
+            _selectedDateRange
+        
+        Class Rules
+            _children
+            _pets
+            _smoking
+            _minimumAgeToRent
+            _maximumGuests
+            _certificationRequirements
+            
+        Class Review
+            _reviewName
+            _reviewComments
+            _reviewStars
+
+
