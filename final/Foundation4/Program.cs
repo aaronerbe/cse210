@@ -17,9 +17,10 @@ class Program
         activities.Add(s);
 
         //writing out to console by calling Activity GetSummary method
+        Console.WriteLine();
         foreach (Activity a in activities){
             Console.WriteLine(a.GetSummary());
         }
-
+        Console.WriteLine();
     }
 }

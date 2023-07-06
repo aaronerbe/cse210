@@ -17,11 +17,11 @@ class Video{
 
     public void DisplayVideoInfo(){
         string line;
-        line = $"{_title}\n{_author}\n{_length}\n{_commentCount}\n";
-        
+        line = $"Video Title:\t{_title}\nVideo Author:\t{_author}\nVideo Length:\t{_length} seconds\n# of Comments:\t{_commentCount}\nComments:\n-------------------------------------------------\n";
+        //only step through if there's actually comments
         if (_commentCount != 0){
             for (int i = 0; i<(_commentCount); i++){
-            line += $"{_comments[i].GetComment()}\n";
+            line += $"{_comments[i].GetName()}:\t{_comments[i].GetComment()}\n";
             }
         }
         Console.WriteLine($"{line}");

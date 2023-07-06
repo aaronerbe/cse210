@@ -25,7 +25,7 @@ class Product{
 
     public string GetPackingLabel(){
         //used to build final packing label.  this method returns info for each product to be compiled by orders
-        return $"{_quantity} of: {_productName}  -\t{_productID}  -\t${_productPrice:F2} each";
+        return $"{_quantity}\tof {_productName}\t-\t{_productID}\t-\t${_productPrice:F2} each";
     }
 
 }

@@ -18,7 +18,9 @@ class Program
 
     //Moved display work into the Video Class to display itsown info instead of passing it all back to program.  Much cleaner.  
     static void DisplayInfo(List<Video> videos){
+        Console.Clear();
         foreach (Video v in videos){
+            Console.WriteLine();
             v.DisplayVideoInfo();
         }
     }

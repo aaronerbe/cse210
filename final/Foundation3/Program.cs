@@ -11,7 +11,6 @@ class Program
         //Keep list of events
         List<Event> events = new List<Event>();
         events = f.ReadFile();
-
         //call the function to create messages
         CreateMessages(events, f);
     }
@@ -19,7 +18,13 @@ class Program
     static void CreateMessages(List<Event> events, FileHandler f){
         //Calls the 3 different type of Message Types
         //Note, passing on filehandler for debug.  easier to read from file than console...
+        int eventNum = 0;
         foreach (Event e in events){
+            eventNum += 1;
+            Console.WriteLine("");
+            Console.WriteLine("---------------");
+            Console.WriteLine($"Event Number {eventNum}");
+            Console.WriteLine("---------------");
             StandardDisplayEvents(e,f);
             FullDisplayEvents(e,f);
             ShortDisplayEvents(e,f);

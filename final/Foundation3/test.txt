@@ -1,29 +1,34 @@
-Standard
+Standard Marketing Material
+===========================
 Speaker Series on How to Program with Classes
 Come join us for an exciting event to learn how to take your programming skills to the next level.
 7/1/23 at 7:00pm
 10 1st West St., A City, A State, 12345
 
-Full
+Full Marketing Material
+=======================
 Lecture
-Speaker Series on How to Program with Classes
+Speaker Series on How to Program with Classes by John Smith
 Come join us for an exciting event to learn how to take your programming skills to the next level.
 Seating Capacity: 50
 7/1/23 at 7:00pm
 10 1st West St., A City, A State, 12345
 
-Short
+Short Marketing Material
+========================
 Lecture
 Speaker Series on How to Program with Classes
 7/1/23
 
-Standard
+Standard Marketing Material
+===========================
 Smith & Hale Reception
 Joseph Smith and Emma Hale will be married in a small ceromony.  You are invited to join in celebration at the reception following the ceromony
 8/10/23 at 4:00pm
 20 2nd East St., B City, B State, 67890
 
-Full
+Full Marketing Material
+=======================
 Reception
 Smith & Hale Reception
 Joseph Smith and Emma Hale will be married in a small ceromony.  You are invited to join in celebration at the reception following the ceromony
@@ -31,18 +36,21 @@ RSVP Here: eventemail@address.com
 8/10/23 at 4:00pm
 20 2nd East St., B City, B State, 67890
 
-Short
+Short Marketing Material
+========================
 Reception
 Smith & Hale Reception
 8/10/23
 
-Standard
+Standard Marketing Material
+===========================
 Team Building BBQ in the Park
 Join us for an afternoon in the park to unwind and enjoy some great BBQ with your fellow TeamMates!
 6/28/23 at 3:30pm
 3rd South St.,C City, C State, 11121
 
-Full
+Full Marketing Material
+=======================
 Outdoor
 Team Building BBQ in the Park
 Join us for an afternoon in the park to unwind and enjoy some great BBQ with your fellow TeamMates!
@@ -50,7 +58,8 @@ Weather Forecast for Event: 75*,Partly Cloudy, 10% Chance of Rain
 6/28/23 at 3:30pm
 3rd South St.,C City, C State, 11121
 
-Short
+Short Marketing Material
+========================
 Outdoor
 Team Building BBQ in the Park
 6/28/23

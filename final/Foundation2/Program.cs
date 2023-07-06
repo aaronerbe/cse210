@@ -14,17 +14,22 @@ class Program
         DisplayLabels(orders);
     }
     static void DisplayLabels(List<Order> orders){
+        int orderNum = 0;
         foreach (Order o in orders){
-            Console.WriteLine();
-            Console.WriteLine(o.GetShippingLabel());
+            orderNum +=1;
+            Console.WriteLine("\n");
+            //Console.WriteLine("=================================================================");
+            Console.WriteLine($"Order Number: {orderNum}");
             //step through all packinglabels to print off
             List<string> packingLabels = o.GetPackingLabel();
             foreach (string p in packingLabels){
                 Console.WriteLine($"{p}");
             }
+            //Create Shipping Label
+            Console.WriteLine(o.GetShippingLabel());
             //Create Payment info w/ totals + shipping
             Console.WriteLine(o.GetFinalBillLabel());
-            Console.WriteLine("-------------------------------------------------------------------------");
+            Console.WriteLine("=================================================================");
         }
         Console.WriteLine();
     }

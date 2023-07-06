@@ -35,7 +35,7 @@ class Event{
 
     //build description
     public string GetStandardDesc(){
-        string description = $"Standard\n{_eventTitle}\n{_description}\n{_date} at {_time}\n{_address.GetAddress()}";
+        string description = $"Standard Marketing Material\n===========================\n{_eventTitle}\n{_description}\n{_date} at {_time}\n{_address.GetAddress()}";
         return description;
     }
     //set as virtual so each event type can add it's own specific details (e.g. RSVP Email for Reception)
@@ -43,7 +43,7 @@ class Event{
         return "";
     }
     public string GetShortDesc(){
-        string description = $"Short\n{_eventType}\n{_eventTitle}\n{_date}";
+        string description = $"Short Marketing Material\n========================\n{_eventType}\n{_eventTitle}\n{_date}";
         return description;
     }
 }

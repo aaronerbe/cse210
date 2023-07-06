@@ -41,13 +41,13 @@ class Order{
     public string GetShippingLabel(){
         //method to build the Shipping label
         string shippingLabel;
-        shippingLabel = $"-------------\nSHIPPING LABEL\n-------------\n{_customer.GetCustomerName()}\n{_customer.GetCustomerAddress()}";
+        shippingLabel = $"-----------------------------------------------------------------\nSHIPPING LABEL\n-----------------------------------------------------------------\n{_customer.GetCustomerName()}\n{_customer.GetCustomerAddress()}";
         return shippingLabel;
     }
     public List<string> GetPackingLabel(){
         //method to build packing label.  lists all items ordered, item id, quantity and price each
         List<string> packingLabel = new List<string>();
-        packingLabel.Add("-------------\nPACKING LABEL\n-------------");
+        packingLabel.Add("-----------------------------------------------------------------\nPACKING LABEL\n-----------------------------------------------------------------");
         //step through all products to get packing label from the product class
         foreach (Product p in _productsList){
             packingLabel.Add($"{p.GetPackingLabel()}");
@@ -57,7 +57,7 @@ class Order{
 
     public string GetFinalBillLabel(){
         //method to build final bill info
-        string total = $"-------------\nPAYMENT INFORMATION\n-------------\nItem(s) Subtotal: \t${_sumOfProductPrices:F2}\nShipping & Handling:  \t${_shippingCost:F2}\nGrand Total:  \t\t${_totalPrice:F2}";
+        string total = $"-----------------------------------------------------------------\nPAYMENT INFORMATION\n-----------------------------------------------------------------\nItem(s) Subtotal: \t${_sumOfProductPrices:F2}\nShipping & Handling:  \t${_shippingCost:F2}\nGrand Total:  \t\t${_totalPrice:F2}";
         return total;
     }
 }
