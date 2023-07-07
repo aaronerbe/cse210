@@ -10,7 +10,7 @@ class Lecture:Event{
 
     //Build Full Description specific to Lecture (include seating capacity)
     public override string GetFullDesc(){
-        string description = $"Full Marketing Material\n=======================\n{base.GetEventType()}\n{base.GetTitle()} by {_speaker}\n{base.GetDescription()}\nSeating Capacity: {_capacity}\n{base.GetDate()} at {base.GetTime()}\n{base.GetAddress().GetAddress()}";
+        string description = $"Full Marketing Material\n=======================\n{base.GetEventType()} Event\n{base.GetTitle()} by {_speaker}\n{base.GetDescription()}\nSeating Capacity: {_capacity}\n{base.GetDate()} at {base.GetTime()}\n{base.GetAddress().GetAddress()}";
         return description;
     }
 }

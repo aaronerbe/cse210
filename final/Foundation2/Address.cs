@@ -18,7 +18,8 @@ class Address{
     }
     private void SetCountryBoolean(){
         //sets boolean based on country information.  used to determine shipping costs
-        if (_country.Contains("USA") || ("USA".Contains(_country))){
+        //Check if country contains usa.  OR if usa contains the country.  So it works if they say US
+        if (_country.ToLower().Contains("usa") || ("usa".Contains(_country.ToLower()))){
             _isUSAAddress = true;
         }
         else{
