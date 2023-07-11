@@ -16,10 +16,10 @@ class Activity{
     public virtual double GetSpeed(){
         return (GetDistance() / GetActivityLength())*60;
     }
-    public virtual double GetPace(){
+    private double GetPace(){
         return 60/GetSpeed();
     }
-    public double GetActivityLength(){
+    private double GetActivityLength(){
         return _activityLength;
     }
     

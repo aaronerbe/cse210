@@ -25,8 +25,7 @@ class FileHandler {
                 //then break up by delimiter and save in a list
                 lineList = line.Split(_csvDelimiter);  
                 
-                //build the comments list first
-                //oddly have to initiate the commentList here (not outside of the while) or it keeps overwriting the list inside of each Video class.  
+                //build the comments list first  
                 List<Comment> commentList = new List<Comment>();
                 //only proceed catching comments if there is comments (count > 3)
                 if (lineList.Count()>3){
