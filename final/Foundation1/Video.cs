@@ -17,7 +17,7 @@ class Video{
 
     public void DisplayVideoInfo(){
         string line;
-        line = $"Video Title:\t{_title}\nVideo Author:\t{_author}\nVideo Length:\t{_length} seconds\n# of Comments:\t{_commentCount}\nComments:\n-------------------------------------------------\n";
+        line = $"Video Title:\t{_title}\nVideo Author:\t{_author}\nVideo Length:\t{_length} seconds\n# of Comments:\t{_commentCount}\n-------------------------------------------------\nName\t\tComment\n-------------------------------------------------\n";
         //only step through if there's actually comments
         if (_commentCount != 0){
             for (int i = 0; i<(_commentCount); i++){

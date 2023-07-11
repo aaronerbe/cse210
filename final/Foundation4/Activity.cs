@@ -27,6 +27,6 @@ class Activity{
     //using ToString to set format for all numbers to keep it clean.
     //Also add a \t for clean formatting
     public string GetSummary(){
-        return $"{_date.ToString("dd MMM yyyy")} {GetType().Name}\t({GetActivityLength()} min) - Distance {GetDistance().ToString("0.00")} miles, Speed {GetSpeed().ToString("0.00")} mph, Pace: {GetPace().ToString("0.00")} min per mile";
+        return $"{_date.ToString("dd MMM yyyy")}\t{GetType().Name}  \t({GetActivityLength()} min)\t{GetDistance().ToString("0.00")} miles\t{GetSpeed().ToString("0.00")} mph\t{GetPace().ToString("0.00")} min per mile";
     }
 }
